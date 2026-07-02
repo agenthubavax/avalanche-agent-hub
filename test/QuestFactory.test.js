@@ -436,14 +436,14 @@ describe("QuestFactory", () => {
       const Factory = await ethers.getContractFactory("QuestFactory");
       const impl2 = await Factory.deploy();
       await impl2.waitForDeployment();
-      await expect(questFactory.connect(owner).upgradeTo(await impl2.getAddress())).to.emit(
+      await expect(questFactory.connect(owner).upgradeToAndCall(await impl2.getAddress(), "0x")).to.emit(
         questFactory,
         "Upgraded",
       );
       // non-owner
       const impl3 = await Factory.deploy();
       await impl3.waitForDeployment();
-      await expect(questFactory.connect(userA).upgradeTo(await impl3.getAddress())).to.be.revertedWithCustomError(
+      await expect(questFactory.connect(userA).upgradeToAndCall(await impl3.getAddress(), "0x")).to.be.revertedWithCustomError(
         questFactory,
         "OwnableUnauthorizedAccount",
       );

@@ -71,7 +71,7 @@ describe("AgentRegistry", () => {
         .to.emit(f.agentRegistry, "AgentRegistered")
         .withArgs(1n, f.agentOwner.address, AT.Trader);
       const a = await f.agentRegistry.getAgent(1);
-      expect(a.id).to.eq(1n); // id field not in struct, but wallet etc.
+      expect(a.wallet).to.eq(VALID_WALLET);
     });
 
     it("stores config correctly", async () => {
@@ -460,13 +460,13 @@ describe("AgentRegistry", () => {
       const Factory = await ethers.getContractFactory("AgentRegistry");
       const impl2 = await Factory.deploy();
       await impl2.waitForDeployment();
-      await expect(agentRegistry.connect(owner).upgradeTo(await impl2.getAddress())).to.emit(
+      await expect(agentRegistry.connect(owner).upgradeToAndCall(await impl2.getAddress(), "0x")).to.emit(
         agentRegistry,
         "Upgraded",
       );
       const impl3 = await Factory.deploy();
       await impl3.waitForDeployment();
-      await expect(agentRegistry.connect(other).upgradeTo(await impl3.getAddress())).to.be.revertedWithCustomError(
+      await expect(agentRegistry.connect(other).upgradeToAndCall(await impl3.getAddress(), "0x")).to.be.revertedWithCustomError(
         agentRegistry,
         "OwnableUnauthorizedAccount",
       );
