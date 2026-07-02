@@ -1,0 +1,47 @@
+{
+  "name": "@agent-hub/core",
+  "version": "0.1.0",
+  "description": "Open-source developer toolkit for deploying AI agents and managing multi-wallet operations on Avalanche",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "jest",
+    "lint": "eslint src/ --ext .ts"
+  },
+  "keywords": [
+    "avalanche",
+    "avax",
+    "agent",
+    "multi-wallet",
+    "quest",
+    "blockchain",
+    "web3",
+    "defi"
+  ],
+  "author": "Layer Airdrop ID",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rmndkyl/avalanche-agent-hub.git"
+  },
+  "dependencies": {
+    "@avalanche-sdk/client": "^0.1.0",
+    "ethers": "^6.0.0",
+    "viem": "^2.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0",
+    "jest": "^29.0.0",
+    "@types/jest": "^29.0.0",
+    "ts-jest": "^29.0.0",
+    "eslint": "^8.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
