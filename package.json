@@ -1,5 +1,5 @@
 {
-  "name": "@agent-hub/core",
+  "name": "agent-hub-avax",
   "version": "0.1.0",
   "type": "module",
   "description": "Open-source developer toolkit for deploying AI agents and managing multi-wallet operations on Avalanche",
@@ -26,7 +26,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/rmndkyl/avalanche-agent-hub.git"
+    "url": "https://github.com/agenthubavax/avalanche-agent-hub.git"
   },
   "dependencies": {
     "@avalanche-sdk/client": "^0.1.0",
