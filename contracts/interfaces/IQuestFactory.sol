@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.20;
+pragma solidity ^0.8.22;
 
 /// @title IQuestFactory - Quest management interface for Avalanche Agent Hub
 /// @notice Defines quest creation, task completion, and reward claiming

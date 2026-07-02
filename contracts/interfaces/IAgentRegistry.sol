@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.20;
+pragma solidity ^0.8.22;
 
 /// @title IAgentRegistry - Agent configuration and tracking interface
 /// @notice Manages AI agent registration, activity recording, and lifecycle

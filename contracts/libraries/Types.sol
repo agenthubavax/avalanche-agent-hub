@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.20;
+pragma solidity ^0.8.22;
 
 /// @title Types - Shared type definitions for Avalanche Agent Hub
 /// @notice Centralized types to avoid cross-contract type mismatches
