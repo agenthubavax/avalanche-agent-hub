@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avalanche Agent Hub — Pitch Deck</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --bg: #0a0a0f;
+            --surface: #12121a;
+            --card: #1a1a25;
+            --accent: #e84142;
+            --text: #e8e8ed;
+            --muted: #8888a0;
+            --border: #2a2a3a;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+        }
+        
+        .slide {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 4rem 8%;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .slide-number {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
+        
+        h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        h1 span { color: var(--accent); }
+        
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        h2 span { color: var(--accent); }
+        
+        .subtitle {
+            font-size: 1.25rem;
+            color: var(--muted);
+            max-width: 700px;
+        }
+        
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .grid-2 { grid-template-columns: 1fr; }
+        }
+        
+        .stat-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+        
+        .stat-label {
+            color: var(--muted);
+            margin-top: 0.5rem;
+        }
+        
+        .problem-item {
+            background: var(--card);
+            border-left: 3px solid var(--accent);
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .problem-item h3 {
+            margin-bottom: 0.5rem;
+        }
+        
+        .problem-item p {
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+        
+        .solution-item {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .solution-icon {
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+        
+        .timeline {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .timeline-item {
+            flex: 1;
+            min-width: 200px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+        
+        .timeline-week {
+            color: var(--accent);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .budget-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 2rem;
+        }
+        
+        .budget-table th,
+        .budget-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .budget-table th {
+            color: var(--muted);
+            font-weight: 600;
+        }
+        
+        .budget-table tr:last-child td {
+            font-weight: 700;
+            color: var(--accent);
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .team-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+        
+        .team-card h4 {
+            margin-bottom: 0.5rem;
+        }
+        
+        .team-card p {
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+        
+        .cta-section {
+            text-align: center;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            margin-top: 2rem;
+            transition: all 0.2s;
+        }
+        
+        .btn:hover {
+            background: #ff6b6b;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Slide 1: Title -->
+    <section class="slide" style="position: relative;">
+        <span class="slide-number">01</span>
+        <div>
+            <h1>Avalanche <span>Agent Hub</span></h1>
+            <p class="subtitle">
+                Open-source developer toolkit for deploying AI agents, 
+                managing multi-wallet operations, and creating on-chain quests 
+                on Avalanche.
+            </p>
+            <p style="margin-top: 2rem; color: var(--muted);">
+                Team1 Builder Grants Application • July 2026
+            </p>
+        </div>
+    </section>
+    
+    <!-- Slide 2: Problem -->
+    <section class="slide" style="position: relative;">
+        <span class="slide-number">02</span>
+        <div>
+            <h2>The <span>Problem</span></h2>
+            <p class="subtitle" style="margin-bottom: 2rem;">
+                Avalanche has 550+ projects but lacks essential developer tooling.
+            </p>
+            
+            <div class="problem-item">
+                <h3>❌ No Quest Infrastructure</h3>
+                <p>Projects build custom quest systems from scratch. Users juggle multiple platforms.</p>
+            </div>
+            
+            <div class="problem-item">
+                <h3>❌ No Agent Toolkit</h3>
+                <p>KiteAI proved agents work ($33M, 715M+ calls) but there's no open-source toolkit to deploy them.</p>
+            </div>
+            
+            <div class="problem-item">
+                <h3>❌ Multi-Wallet Pain</h3>
+                <p>DAOs, treasuries, and farming communities need multi-wallet management. Nothing exists.</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Slide 3: Market -->
+    <section class="slide" style="position: relative;">
+        <span class="slide-number">03</span>
+        <div>
+            <h2>The <span>Opportunity</span></h2>
+            <div class="grid-2">
+                <div class="stat-card">
+                    <div class="stat-number">$33M</div>
+                    <div class="stat-label">KiteAI Funding (Agent Economy)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">715M+</div>
+                    <div class="stat-label">Agent Calls on Avalanche</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">550+</div>
+                    <div class="stat-label">Active Projects</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">$2.77B</div>
+                    <div class="stat-label">DeFi TVL</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Slide 4: Solution -->
+    <section class="slide" style="position: relative;">
+        <span class="slide-number">04</span>
+        <div>
+            <h2>Our <span>Solution</span></h2>
+            <p class="subtitle" style="margin-bottom: 2rem;">
+                Three modules, one SDK. Built on official @avalanche-sdk/client.
+            </p>
+            
+            <div class="solution-item">
+                <div class="solution-icon">📜</div>
+                <div>
+                    <h3>Quest SDK</h3>
+                    <p style="color: var(--muted);">Create, distribute, and verify on-chain quests. Social + on-chain tasks in one API.</p>
+                </div>
+            </div>
+            
+            <div class="solution-item">
+                <div class="solution-icon">🤖</div>
+                <div>
+                    <h3>Agent Kit</h3>
+                    <p style="color: var(--muted);">Deploy AI agent templates. Trading, monitoring, portfolio — out of the box.</p>
+                </div>
+            </div>
+            
+            <div class="solution-item">
+                <div class="solution-icon">💰</div>
+                <div>
+                    <h3>Wallet Manager</h3>
+                    <p style="color: var(--muted);">Multi-wallet with AES-256 encryption. Portfolio across all Avalanche chains.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Slide 5: Why Us -->
+    <section class="slide" style="position: relative;">
+        <span class="slide-number">05</span>
+        <div>
+            <h2>Why <span>Us</span></h2>
+            <p class="subtitle" style="margin-bottom: 2rem;">
+                Battle-tested, not theoretical.
+            </p>
+            
+            <div class="team-grid">
+                <div class="team-card">
+                    <h4>11+ Production Bots</h4>
+                    <p>Working bots across Avalanche, Polygon, Solana. Real code, real wallets, real transactions.</p>
+                </div>
+                
+                <div class="team-card">
+                    <h4>Multi-Wallet at Scale</h4>
+                    <p>Managing 100+ wallets with encryption, queue systems, and gas optimization.</p>
+                </div>
+                
+                <div class="team-card">
+                    <h4>Full-Stack Capability</h4>
+                    <p>Smart contracts, backend, frontend, DevOps. Ship fast, ship right.</p>
+                </div>
+                
+                <div class="team-card">
+                    <h4>Open Source DNA</h4>
+                    <p>GitHub repos with 30-60 stars. Community-driven, MIT licensed.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Slide 6: Timeline -->
+    <section class="slide" style="position: relative;">
+        <span class="slide-number">06</span>
+        <div>
+            <h2>4-Week <span>Roadmap</span></h2>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-week">Week 1</div>
+                    <h4>Quest SDK Core</h4>
+                    <p style="color: var(--muted);">Create + verify quests on C-Chain. Smart contract deployment.</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-week">Week 2</div>
+                    <h4>Agent Kit</h4>
+                    <p style="color: var(--muted);">Deploy templates + monitoring. Integration with KiteAI patterns.</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-week">Week 3</div>
+                    <h4>Wallet Manager</h4>
+                    <p style="color: var(--muted);">Multi-wallet + encryption + portfolio tracking.</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-week">Week 4</div>
+                    <h4>Launch</h4>
+                    <p style="color: var(--muted);">Dashboard + docs + community testing + NPM publish.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Slide 7: Budget -->
+    <section class="slide" style="position: relative;">
+        <span class="slide-number">07</span>
+        <div>
+            <h2>Budget <span>Request: $10,000</span></h2>
+            
+            <table class="budget-table">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Amount</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Development</td>
+                        <td>$6,000</td>
+                        <td>4 weeks focused development</td>
+                    </tr>
+                    <tr>
+                        <td>Testing & Deployment</td>
+                        <td>$2,000</td>
+                        <td>Testnet + mainnet, gas costs</td>
+                    </tr>
+                    <tr>
+                        <td>Documentation</td>
+                        <td>$1,000</td>
+                        <td>GitBook docs, tutorials, examples</td>
+                    </tr>
+                    <tr>
+                        <td>Community</td>
+                        <td>$1,000</td>
+                        <td>Beta testing incentives</td>
+                    </tr>
+                    <tr>
+                        <td>Total</td>
+                        <td>$10,000</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+    
+    <!-- Slide 8: Impact -->
+    <section class="slide" style="position: relative;">
+        <span class="slide-number">08</span>
+        <div>
+            <h2>Ecosystem <span>Impact</span></h2>
+            <p class="subtitle" style="margin-bottom: 2rem;">
+                Direct impact on 550+ Avalanche projects.
+            </p>
+            
+            <div class="grid-2">
+                <div>
+                    <h3 style="margin-bottom: 1rem;">30 Days</h3>
+                    <ul style="color: var(--muted); list-style: none;">
+                        <li style="margin-bottom: 0.5rem;">✓ 50+ GitHub stars</li>
+                        <li style="margin-bottom: 0.5rem;">✓ 10+ projects integrating</li>
+                        <li style="margin-bottom: 0.5rem;">✓ 100+ quest completions</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 style="margin-bottom: 1rem;">90 Days</h3>
+                    <ul style="color: var(--muted); list-style: none;">
+                        <li style="margin-bottom: 0.5rem;">✓ 200+ GitHub stars</li>
+                        <li style="margin-bottom: 0.5rem;">✓ 50+ projects integrating</li>
+                        <li style="margin-bottom: 0.5rem;">✓ 1000+ quest completions</li>
+                        <li style="margin-bottom: 0.5rem;">✓ 5+ case studies</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Slide 9: CTA -->
+    <section class="slide cta-section">
+        <span class="slide-number">09</span>
+        <div>
+            <h1>Let's Build the <span>Agentic Future</span></h1>
+            <p class="subtitle" style="margin: 0 auto 2rem;">
+                Open-source. Avalanche-native. Battle-tested.
+            </p>
+            <a href="https://github.com/rmndkyl/avalanche-agent-hub" class="btn">
+                View on GitHub →
+            </a>
+            <p style="margin-top: 2rem; color: var(--muted);">
+                Contact: @layerairdrop on Twitter
+            </p>
+        </div>
+    </section>
+</body>
+</html>
