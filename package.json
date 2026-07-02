@@ -8,7 +8,7 @@
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch",
-    "test": "jest",
+    "test": "hardhat test",
     "lint": "eslint src/ --ext .ts",
     "compile": "hardhat compile"
   },

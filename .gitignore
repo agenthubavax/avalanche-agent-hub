@@ -8,3 +8,5 @@ cache/
 .DS_Store
 coverage/
 .turbo/
+
+.vercel

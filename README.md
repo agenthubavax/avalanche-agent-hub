@@ -1,135 +1,123 @@
 # Avalanche Agent Hub 🔺
 
-Open-source developer toolkit for deploying AI agents and managing multi-wallet operations on Avalanche.
+Open-source Avalanche-native toolkit for programmable on-chain quests and agent operations.
 
 ## Why?
 
-The Avalanche ecosystem has 550+ active projects and is pushing into the agentic economy (KiteAI: $33M funded, 715M+ agent calls). But there's no open-source toolkit that makes it easy to:
+Avalanche has capital, users, ecosystem programs, and growing interest in agentic products. But builders still face the same repetitive infra work:
+- custom quest logic
+- wallet-aware automation glue
+- reward distribution flows
+- dashboard proof for grants / protocols
+- fragmented tooling across agent, wallet, and campaign layers
 
-- Deploy AI agents on Avalanche C-Chain/L1s
-- Manage multi-wallet operations at scale
-- Create and verify on-chain quest systems
-- Monitor agent activity across the ecosystem
+Avalanche Agent Hub exists to reduce that setup cost with an open, developer-first base layer.
 
-## Modules
+## What it is
 
-### Quest SDK
-Create, distribute, and verify on-chain quests.
+Avalanche Agent Hub is a product + infra starter stack for:
+- programmable on-chain quests
+- agent-linked operations
+- wallet-aware automation on Avalanche
 
-```typescript
-import { AgentHub } from '@agent-hub/core';
+Today it includes:
+- Fuji-deployed contracts
+- a published TypeScript package: `agent-hub-avax@0.1.0`
+- a public live-RPC dashboard
+- landing page, pitch deck, and strategy docs
 
-const hub = AgentHub({ network: 'mainnet' });
+## Sharp positioning
 
-// Create a quest
-const quest = await hub.quest.create({
-  title: "Complete 5 swaps on Trader Joe",
-  chain: "C-Chain",
-  tasks: [
-    { type: "on-chain", contract: "0x...", method: "swap", count: 5 },
-    { type: "social", platform: "twitter", action: "follow" }
-  ],
-  rewards: { token: "AVAX", amount: 0.1 }
-});
+Best current framing:
 
-// Verify completion
-const status = await hub.quest.verify({
-  questId: quest.id,
-  wallet: "0x..."
-});
-```
+> Avalanche Agent Hub is an open-source Avalanche-native toolkit for programmable on-chain quests and agent operations.
 
-### Agent Kit
-Deploy AI agent templates on Avalanche.
+Avoid broader framing like “everything platform for AI agents.”
 
-```typescript
-// Deploy a trading agent
-const agent = await hub.agent.deploy({
-  type: "trader",
-  wallet: encryptedWallet,
-  rules: {
-    maxTradeSize: "100 USDC",
-    allowedTokens: ["AVAX", "USDC"],
-    stopLoss: "5%"
-  }
-});
+That is too wide for the current product state and weakens the wedge.
 
-// Monitor agent activity
-const activity = await hub.agent.status(agent.id);
-```
+## What makes it different
 
-### Wallet Manager
-Multi-wallet management with encryption.
+### 1. Avalanche-native
+Built around Avalanche deployment, Avalanche ecosystem use-cases, and Avalanche distribution paths.
 
-```typescript
-// Import multiple wallets
-const wallets = await hub.wallet.import({
-  file: "./accounts.json",
-  encryption: "AES-256"
-});
+### 2. Developer-first
+This is not only a campaign UI. It is code-first:
+- contracts
+- package
+- dashboard
+- extensible primitives
 
-// Portfolio across all wallets
-const portfolio = await hub.wallet.portfolio(wallets);
-```
+### 3. Open-source
+Teams can inspect, fork, and self-host. That matters for grants, protocol trust, and ecosystem adoption.
 
-## Installation
+### 4. Embedded quest + wallet + agent operations
+Many alternatives only own one layer:
+- generic agent tooling
+- quest marketplaces
+- community gamification
+- wallet/API infrastructure
 
-```bash
-npm install @agent-hub/core
-```
+Agent Hub’s best story is the combination: agent-linked actions, wallet-aware operations, and programmable quest rails inside one Avalanche-native stack.
 
-## Quick Start
+### 5. Live on-chain proof
+Public dashboard now shows live Fuji RPC data instead of mock KPIs.
+That is stronger for grant credibility than a static landing page alone.
 
-```typescript
-import { AgentHub } from '@agent-hub/core';
+## Core surfaces
 
-const hub = AgentHub({
-  network: 'mainnet',
-  rpcUrl: 'https://api.avax.network/ext/bc/C/rpc'
-});
+### Smart contracts
+- `contracts/QuestFactory.sol`
+- `contracts/AgentRegistry.sol`
 
-// Your code here
-```
+### npm package
+- package: `agent-hub-avax`
+- version: `0.1.0`
+- npm: https://www.npmjs.com/package/agent-hub-avax
 
-## Architecture
+### Dashboard
+- app path: `dashboard/`
+- production URL: https://dashboard-mauve-eight-44.vercel.app
+- shows live Fuji RPC snapshot, latest block, gas, deployer balance, contract bytecode presence
 
-```
-┌─────────────────────────────────────────────┐
-│              Avalanche Agent Hub             │
-├─────────────┬─────────────┬─────────────────┤
-│  Quest SDK  │ Agent Kit   │ Wallet Manager  │
-├─────────────┴─────────────┴─────────────────┤
-│         @avalanche-sdk/client (base)         │
-├─────────────────────────────────────────────┤
-│    Avalanche C-Chain / L1s / Subnets        │
-└─────────────────────────────────────────────┘
-```
+## Current product truth
 
-## Roadmap
+Published reality today:
+- one package: `agent-hub-avax`
+- Fuji testnet contracts deployed
+- public dashboard live
+- Team1 grant submitted
 
-- [ ] Quest SDK core (create + verify)
-- [ ] Agent Kit (deploy templates)
-- [ ] Wallet Manager (multi-wallet + encryption)
-- [ ] Dashboard UI
-- [ ] KiteAI integration
-- [ ] Cross-L1 support
-- [ ] Documentation site
+Architecture direction for later:
+- possible modular split into scoped packages like `@agent-hub/quest`, `@agent-hub/agent`, `@agent-hub/wallet`
 
-## Contributing
+That split is still future direction, not current external product truth.
 
-Contributions welcome! Please open an issue first to discuss what you'd like to change.
+## Primary target users
 
-## License
+### Primary ICP
+- Avalanche-native protocol teams
+- ecosystem / growth teams running quests or incentives
+- developers building wallet-aware quest rails or agent-linked products on Avalanche
 
-MIT
+### Secondary ICP
+- teams wanting self-hostable alternatives to closed campaign platforms
+- grant reviewers / ecosystem partners evaluating reusable infra
 
-## Built with
+## What to emphasize in pitches
 
-- [Avalanche SDK](https://github.com/ava-labs/avalanche-sdk-typescript)
-- [ethers.js](https://docs.ethers.org/)
-- [TypeScript](https://www.typescriptlang.org/)
+1. Open-source Avalanche-native infra, not just another campaign frontend
+2. Programmable on-chain quest + reward rails
+3. Live proof: contracts + dashboard + npm package already exist
 
-## Contact
+## Links
 
-- GitHub: [rmndkyl](https://github.com/rmndkyl)
-- Twitter: [@AgentHubAvax](https://twitter.com/AgentHubAvax)
+- GitHub: https://github.com/agenthubavax/avalanche-agent-hub
+- Landing page: https://agenthubavax.github.io/avalanche-agent-hub/
+- Dashboard: https://dashboard-mauve-eight-44.vercel.app
+- npm: https://www.npmjs.com/package/agent-hub-avax
+- Twitter: https://x.com/AgentHubAvax
+
+## Next doc
+
+For competitor map and market wedge, read `COMPETITION.md`.
