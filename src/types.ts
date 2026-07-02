@@ -23,7 +23,7 @@ export interface QuestTask {
   contract?: string;
   method?: string;
   count?: number;
-  metadata?: Record<string, any>;
+  metadata?: Record<string, unknown>;
 }
 
 export interface QuestReward {
@@ -47,7 +47,7 @@ export interface AgentRules {
   stopLoss?: string;
   takeProfit?: string;
   maxDailyTransactions?: number;
-  [key: string]: any;
+  [key: string]: unknown;
 }
 
 export interface Wallet {
@@ -55,7 +55,7 @@ export interface Wallet {
   chain: string;
   balance?: string;
   encrypted?: boolean;
-  metadata?: Record<string, any>;
+  metadata?: Record<string, unknown>;
 }
 
 export interface Portfolio {
