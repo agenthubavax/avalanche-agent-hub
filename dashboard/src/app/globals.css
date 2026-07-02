@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-bg: #0a0a0f;
+  --color-surface: #12121a;
+  --color-card: #1a1a25;
+  --color-accent: #E84142;
+  --color-text: #ededed;
+  --color-muted: #a1a1a6;
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+}
